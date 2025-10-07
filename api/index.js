@@ -28,16 +28,18 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ Use writable /tmp directory (serverless safe)
-const uploadDir = path.join('/tmp', 'uploads');
-const DOWNLOAD_DIR = path.join('/tmp', 'downloads');
+const uploadDir = '';
+const DOWNLOAD_DIR = '';
+// const uploadDir = path.join('/tmp', 'uploads');
+// const DOWNLOAD_DIR = path.join('/tmp', 'downloads');
 
-// Create temporary directories if not exist
-if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
-if (!fs.existsSync(DOWNLOAD_DIR)) fs.mkdirSync(DOWNLOAD_DIR, { recursive: true });
+// // Create temporary directories if not exist
+// if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+// if (!fs.existsSync(DOWNLOAD_DIR)) fs.mkdirSync(DOWNLOAD_DIR, { recursive: true });
 
-// Serve static files from /tmp directories
-app.use('/uploads', express.static(uploadDir));
-app.use('/downloads', express.static(DOWNLOAD_DIR));
+// // Serve static files from /tmp directories
+// app.use('/uploads', express.static(uploadDir));
+// app.use('/downloads', express.static(DOWNLOAD_DIR));
 
 // 🧠 YouTube Search API
 app.get("/search", async (req, res) => {
