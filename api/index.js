@@ -92,7 +92,7 @@ app.post('/download', async (req, res) => {
 
     // result should contain the filename in "output" or "file"
     const downloadedFile = typeof result === 'string' ? result : result._filename;
-    const fileName = path.basename(downloadedFile).slice(0,path.basename(downloadedFile).length-1);
+    const fileName = path.basename(downloadedFile).slice(0, path.basename(downloadedFile).length - 1);
 
     // Build the full URL (if serving via static route)
     const fileUrl = `http://192.168.1.45:4000/downloads/${encodeURIComponent(fileName)}`;
@@ -296,6 +296,11 @@ io.on('connection', (socket) => {
       }
     });
   });
+});
+
+
+app.get('/', (req, res) => {
+  res.send('Hello from Express on Vercel!');
 });
 
 const PORT = process.env.PORT || 4000;
